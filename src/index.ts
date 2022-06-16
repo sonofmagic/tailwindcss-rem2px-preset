@@ -4,36 +4,48 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 export interface UserDefinedOptions {
   fontSize?: number
+  unit?: string
+}
+
+const defaultOptions: Required<UserDefinedOptions> = {
+  fontSize: 16,
+  unit: 'px'
+}
+
+export function createRem2px (option: UserDefinedOptions = {}) {
+  return (input: any) => {
+    return rem2px(input, option.fontSize, option.unit)
+  }
 }
 
 export { rem2px }
 
 export function createPreset (option: UserDefinedOptions = {}) {
-  const { fontSize } = Object.assign({ fontSize: 16 }, option)
-
+  const opt = Object.assign<
+    UserDefinedOptions,
+    Required<UserDefinedOptions>,
+    UserDefinedOptions
+  >({}, defaultOptions, option)
+  const customRem2px = createRem2px(opt)
   const config: Config = {
     content: ['src/**/*.{vue,js,ts,jsx,tsx}'],
     theme: {
-      borderRadius: rem2px(defaultTheme.borderRadius, fontSize) as Record<
+      borderRadius: customRem2px(defaultTheme.borderRadius) as Record<
         string,
         string
       >,
-      columns: rem2px(defaultTheme.columns, fontSize) as Record<string, string>,
-      fontSize: rem2px(defaultTheme.fontSize, fontSize) as Record<
-        string,
-        string
-      >,
-      lineHeight: rem2px(defaultTheme.lineHeight, fontSize) as Record<
+      columns: customRem2px(defaultTheme.columns) as Record<string, string>,
+      fontSize: customRem2px(defaultTheme.fontSize) as Record<string, string>,
+      lineHeight: customRem2px(defaultTheme.lineHeight) as Record<
         string,
         string
       >,
       maxWidth: ({ theme, breakpoints }) => ({
-        ...(rem2px(
-          defaultTheme.maxWidth({ theme, breakpoints }),
-          fontSize
+        ...(customRem2px(
+          defaultTheme.maxWidth({ theme, breakpoints })
         ) as Record<string, string>)
       }),
-      spacing: rem2px(defaultTheme.spacing, fontSize) as Record<string, string>
+      spacing: customRem2px(defaultTheme.spacing) as Record<string, string>
     }
   }
   return config

@@ -2,7 +2,8 @@
 
 function rem2px (
   input: string | string[] | Record<string, string> | any,
-  fontSize = 16
+  fontSize = 16,
+  unit = 'px'
 ): string | string[] | Record<string, string> {
   if (input == null) {
     return input
@@ -21,7 +22,7 @@ function rem2px (
     case 'string':
       return input.replace(
         /(\d*\.?\d+)rem$/,
-        (_, val) => parseFloat(val) * fontSize + 'px'
+        (_, val) => parseFloat(val) * fontSize + unit
       )
     default:
       return input

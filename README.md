@@ -21,7 +21,9 @@ module.exports = {
 
 ### Custom
 
-e.g: `1rem` -> `32px`
+For weapp developers, we need to use `rpx` instead of `rem`
+
+e.g: `1rem` -> `32rpx`
 
 ```js
 // tailwind.config.js
@@ -29,7 +31,8 @@ e.g: `1rem` -> `32px`
 module.exports = {
   presets: [
     require('tailwindcss-rem2px-preset').createPreset({
-      fontSize: 32
+      fontSize: 32,
+      unit: 'rpx'
     })
   ],
   // ...

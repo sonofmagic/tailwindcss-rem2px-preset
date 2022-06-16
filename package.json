@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-rem2px-preset",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "tailwindcss-rem2px-preset, allow configuration for using px instead of rem.",
   "main": "dist/index.js",
   "types": "types/index.d.ts",
@@ -10,6 +10,7 @@
     "build:tsc": "cross-env NODE_ENV=development tsc --build tsconfig.json",
     "dts": "ttsc --emitDeclarationOnly -p tsconfig.dts.json",
     "test": "jest",
+    "pretest": "yarn build",
     "init:rename": "node scripts/init/rename.js",
     "init:bin": "node scripts/init/bin.js",
     "clean": "node scripts/clean.js"
@@ -31,7 +32,9 @@
     "tailwindcss-rem2px-preset",
     "tailwindcss-preset",
     "rem2px",
-    "preset"
+    "preset",
+    "weapp",
+    "rpx"
   ],
   "author": "SonOfMagic <qq1324318532@gmail.com>",
   "license": "MIT",
