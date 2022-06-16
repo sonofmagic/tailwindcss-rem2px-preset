@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-rem2px-preset",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "tailwindcss-rem2px-preset, allow configuration for using px instead of rem.",
   "main": "dist/index.js",
   "types": "types/index.d.ts",

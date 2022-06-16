@@ -19,8 +19,7 @@ describe('[Default]', () => {
     unit: 'rpx'
   })
   const preset32 = preset.createPreset({
-    fontSize: 32,
-    unit: 'rpx'
+    fontSize: 32
   })
   test('default preset', () => {
     expect(preset.content).toEqual(['src/**/*.{vue,js,ts,jsx,tsx}'])
@@ -65,5 +64,12 @@ describe('[Default]', () => {
 
   test('rem 2 rpx', () => {
     expect(rem2rpx32('borderRadius: 1rem')).toBe('borderRadius: 32rpx')
+    expect(
+      rem2rpx32({
+        borderRadius: '1rem'
+      })
+    ).toEqual({
+      borderRadius: '32rpx'
+    })
   })
 })

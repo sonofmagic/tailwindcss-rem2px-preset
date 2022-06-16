@@ -1,11 +1,7 @@
 import type { Config } from 'tailwindcss'
 import { rem2px } from './util'
+import type { UserDefinedOptions } from './type'
 const defaultTheme = require('tailwindcss/defaultTheme')
-
-export interface UserDefinedOptions {
-  fontSize?: number
-  unit?: string
-}
 
 const defaultOptions: Required<UserDefinedOptions> = {
   fontSize: 16,

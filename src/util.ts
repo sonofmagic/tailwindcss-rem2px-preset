@@ -11,11 +11,11 @@ function rem2px (
   switch (typeof input) {
     case 'object':
       if (Array.isArray(input)) {
-        return input.map((val) => rem2px(val, fontSize)) as string[]
+        return input.map((val) => rem2px(val, fontSize, unit)) as string[]
       } else {
         const ret: Record<string, string> = {}
         for (const key in input) {
-          ret[key] = rem2px(input[key], fontSize) as string
+          ret[key] = rem2px(input[key], fontSize, unit) as string
         }
         return ret
       }
