@@ -18,8 +18,8 @@ const config = {
       format: 'cjs',
       sourcemap: isDev,
       exports: 'auto'
-    },
-    { format: 'esm', file: pkg.module, sourcemap: isDev }
+    }
+    // { format: 'esm', file: pkg.module, sourcemap: isDev }
     // {
     //   dir: 'dist',
     //   format: 'cjs',
