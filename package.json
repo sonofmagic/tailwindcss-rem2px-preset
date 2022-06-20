@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-rem2px-preset",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "tailwindcss-rem2px-preset, allow configuration for using px instead of rem.",
   "main": "dist/index.js",
   "types": "types/index.d.ts",
@@ -43,7 +43,7 @@
   },
   "homepage": "https://github.com/sonofmagic/tailwindcss-rem2px-preset#readme",
   "peerDependencies": {
-    "tailwindcss": "^2.0.0 | ^3.0.0"
+    "tailwindcss": "^2.0.0 || >=3.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.9",
