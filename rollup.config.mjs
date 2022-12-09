@@ -1,7 +1,12 @@
 import typescript from '@rollup/plugin-typescript'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import pkg from './package.json'
+import { readFileSync } from 'node:fs'
+const pkg = JSON.parse(
+  readFileSync('./package.json', {
+    encoding: 'utf8'
+  })
+)
 // import json from '@rollup/plugin-json'
 // import replace from '@rollup/plugin-replace'
 // import { terser } from 'rollup-plugin-terser'
@@ -17,7 +22,13 @@ const config = {
       file: pkg.main,
       format: 'cjs',
       sourcemap: isDev,
-      exports: 'auto'
+      exports: 'auto',
+      esModule: true,
+      generatedCode: {
+        reservedNamesAsProps: false
+      },
+      interop: 'compat',
+      systemNullSetters: false
     }
     // { format: 'esm', file: pkg.module, sourcemap: isDev }
     // {
@@ -35,7 +46,9 @@ const config = {
     commonjs(),
     typescript({ tsconfig: './tsconfig.build.json', sourceMap: isDev })
   ],
-  external: [...(pkg.dependencies ? Object.keys(pkg.dependencies) : [])]
+  external: [...(pkg.dependencies ? Object.keys(pkg.dependencies) : [])],
+  makeAbsoluteExternalsRelative: true,
+  preserveEntrySignatures: 'strict'
 }
 
 export default config
